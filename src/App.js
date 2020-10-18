@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment, useEffect, useState } from 'react';
+import { adaptedUsers } from './adapter';
+import UsersPage from './pages/users-page';
+const url = `https://5ebbb8e5f2cfeb001697d05c.mockapi.io/users`;
 
-function App() {
+const App = () => {
+  const [data, setData] = useState(null);
+
+  const getUsers = async () => {
+    const response = await fetch(url);
+    const json = await response.json();
+    const users = adaptedUsers(json);
+
+    setData(users);
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      {data &&
+        <UsersPage data={data} setData={setData}/>
+      }</Fragment>
   );
 }
 
