@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 
 const SearchUsersForm = ({ formState, setFormState }) => {
-  const {filterType, sortType} = formState;
+  const { filterType, sortType } = formState;
   const [visibleResetBtn, setVisibleResetBtn] = useState(false);
 
   useEffect(() => {
@@ -18,9 +18,10 @@ const SearchUsersForm = ({ formState, setFormState }) => {
         <div className="search">
           <input
             onChange={(evt) => {
+              const value = evt.target.value;
               setFormState((prev) => ({
                 ...prev,
-                filterType: evt.target.value,
+                filterType: value,
               }));
             }}
             type="search"
@@ -30,18 +31,20 @@ const SearchUsersForm = ({ formState, setFormState }) => {
         </div>
         {visibleResetBtn && (
           <Fragment>
-            <span className="check-mark">&#10003;</span>
-            <input
-              onClick={() => {
-                setFormState({
-                  filterType: "",
-                  sortType: null,
-                });
-              }}
-              className="clear"
-              type="reset"
-              value="Очистить фильтр"
-            ></input>
+            <label className="check-mark">
+              &#10003;
+              <input
+                onClick={() => {
+                  setFormState({
+                    filterType: "",
+                    sortType: null,
+                  });
+                }}
+                className="clear"
+                type="reset"
+                value="Очистить фильтр"
+              ></input>
+            </label>
           </Fragment>
         )}
       </div>

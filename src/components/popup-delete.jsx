@@ -1,14 +1,16 @@
 import React from "react";
 
-const PopupDelete = ({ idUsersdelete, setIdUsersdelete, data, setData }) => {
+const PopupDelete = ({ idUsersdelete, setIdUsersdelete, users, setUsers }) => {
+
   return (
     <div className={`popup-container ${!idUsersdelete && `visually-hidden`}`}>
       <div className="popup-delete">
         <h3>Вы уверены, что хотите удалить пользователя</h3>
         <button
           onClick={() => {
-            const newUsers = data.filter((it) => it.id !== idUsersdelete);
-            setData(newUsers);
+            const newUsers = users.filter((it) => it.id !== idUsersdelete);
+
+            setUsers(newUsers);
             setIdUsersdelete(null);
           }}
           className="btn-delete btn-delete--yes"

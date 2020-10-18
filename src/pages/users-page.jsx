@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import SearchResults from "../components/search-results";
 import SearchUsersForm from "../components/search-users-form";
 
-const UsersPage = ({ data, setData }) => {
+const UsersPage = ({ users, setUsers }) => {
   const [formState, setFormState] = useState({
     filterType: "",
     sortType: null,
@@ -11,14 +11,14 @@ const UsersPage = ({ data, setData }) => {
   return (
     <div className="container">
       <h1>Список пользователей</h1>
-      {data && (
+      {users && (
         <Fragment>
           <SearchUsersForm formState={formState} setFormState={setFormState} />
           <SearchResults
-            data={data}
+            users={users}
             filterType={formState.filterType}
             sortType={formState.sortType}
-            setData={setData}
+            setUsers={setUsers}
           />
         </Fragment>
       )}
