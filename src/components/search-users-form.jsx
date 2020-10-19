@@ -13,8 +13,10 @@ const SearchUsersForm = ({ formState, setFormState }) => {
   }, [filterType, sortType]);
 
   return (
-    <form className="form-users-search">
-      <div className="searc-bar">
+    <form onSubmit={(evt) => {
+      evt.preventDefault()
+    }} className="form-users-search">
+      <fieldset className="searc-bar">
         <div className="search">
           <input
             onChange={(evt) => {
@@ -47,9 +49,9 @@ const SearchUsersForm = ({ formState, setFormState }) => {
             </label>
           </Fragment>
         )}
-      </div>
+      </fieldset>
 
-      <div className="sort-bar">
+      <fieldset className="sort-bar">
         <span className="sort-title">Сортировка: </span>
         <div className="sort-type">
           <input
@@ -91,7 +93,7 @@ const SearchUsersForm = ({ formState, setFormState }) => {
             Рейтинг
           </label>
         </div>
-      </div>
+      </fieldset>
     </form>
   );
 };

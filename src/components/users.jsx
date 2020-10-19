@@ -5,14 +5,14 @@ import PopupDelete from "./popup-delete";
 import User from "./user";
 
 const Users = ({ sortedUsers, setUsers, filterType, users }) => {
-  const [idUsersdelete, setIdUsersdelete] = useState(null);
+  const [idUserDelete, setIdUserDelete] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
   const usersPerPage = 5;
 
-  const indexOfLastPost = currentPage * usersPerPage;
-  const indexOfFirstPost = indexOfLastPost - usersPerPage;
-  const currentUsers = sortedUsers.slice(indexOfFirstPost, indexOfLastPost);
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = sortedUsers.slice(indexOfFirstUser, indexOfLastUser);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -37,7 +37,7 @@ const Users = ({ sortedUsers, setUsers, filterType, users }) => {
                 <User
                   key={userData.id}
                   userData={userData}
-                  setIdUsersdelete={setIdUsersdelete}
+                  setIdUserDelete={setIdUserDelete}
                 />
               );
             })}
@@ -55,8 +55,8 @@ const Users = ({ sortedUsers, setUsers, filterType, users }) => {
       />
 
       <PopupDelete
-        idUsersdelete={idUsersdelete}
-        setIdUsersdelete={setIdUsersdelete}
+        idUserDelete={idUserDelete}
+        setIdUserDelete={setIdUserDelete}
         setUsers={setUsers}
         users={users}
       />

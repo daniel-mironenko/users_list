@@ -1,17 +1,17 @@
 import React from "react";
 
-const PopupDelete = ({ idUsersdelete, setIdUsersdelete, users, setUsers }) => {
+const PopupDelete = ({ idUserDelete, setIdUserDelete, users, setUsers }) => {
 
   return (
-    <div className={`popup-container ${!idUsersdelete && `visually-hidden`}`}>
+    <div className={`popup-container ${!idUserDelete && `visually-hidden`}`}>
       <div className="popup-delete">
         <h3>Вы уверены, что хотите удалить пользователя</h3>
         <button
           onClick={() => {
-            const newUsers = users.filter((it) => it.id !== idUsersdelete);
+            const newUsers = users.filter((it) => it.id !== idUserDelete);
 
             setUsers(newUsers);
-            setIdUsersdelete(null);
+            setIdUserDelete(null);
           }}
           className="btn-delete btn-delete--yes"
         >
@@ -19,7 +19,7 @@ const PopupDelete = ({ idUsersdelete, setIdUsersdelete, users, setUsers }) => {
         </button>
         <button
           onClick={() => {
-            setIdUsersdelete(null);
+            setIdUserDelete(null);
           }}
           className="btn-delete btn-delete--no"
         >

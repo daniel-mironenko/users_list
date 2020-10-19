@@ -1,7 +1,7 @@
 import React from "react";
 import { getCustomDate } from "../utils/data-helper";
 
-const User = ({ userData, setIdUsersdelete }) => {
+const User = ({ userData, setIdUserDelete }) => {
   const { username, email, registrationDate, rating, id } = userData;
   const date = getCustomDate(registrationDate);
 
@@ -14,7 +14,7 @@ const User = ({ userData, setIdUsersdelete }) => {
       <td>
         <span
           onClick={() => {
-            setIdUsersdelete(id)
+            setIdUserDelete(id)
           }}
           className="delete-user"
         >
